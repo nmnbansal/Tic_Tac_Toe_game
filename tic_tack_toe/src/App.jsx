@@ -17,13 +17,14 @@ const App = () => {
   const renderSquare = (index) => {
     return (
       <Button
-        w="100px"
+        w="100%"
         h="100px"
         fontSize="2xl"
+        fontFamily="Arial, sans-serif"
         onClick={() => handleClick(index)}
-        bgGradient="linear(to-r, purple.400, pink.400)"
+        bgGradient="linear(to-r, #FF512F, #F09819)"
         _hover={{
-          bgGradient: "linear(to-r, purple.500, pink.500)",
+          bgGradient: "linear(to-r, #F09819, #FF512F)",
         }}
         color="white"
       >
@@ -87,20 +88,32 @@ const App = () => {
   return (
     <Box
       minH="100vh"
-      bgGradient="linear(to-r, #ff7e5f, #feb47b)"
+      bgGradient="linear(to-r, #FF512F, #F09819)"
       display="flex"
       justifyContent="center"
       alignItems="center"
     >
-      <VStack spacing={4} p={8} bg="whiteAlpha.900" rounded="md" boxShadow="lg">
-        <Text fontSize="3xl" fontWeight="bold" bgGradient="linear(to-l, #7928CA, #FF0080)" bgClip="text">
+      <VStack spacing={4} p={[4, 8]} bg="whiteAlpha.900" rounded="md" boxShadow="lg" maxW="500px">
+        <Text fontSize={['2xl', '3xl']} fontWeight="bold" fontFamily="Georgia, serif" bgGradient="linear(to-l, #FF512F, #F09819)" bgClip="text">
           Tic Tac Toe
         </Text>
-        <Grid templateColumns="repeat(3, 1fr)" gap={2}>
-          {board.map((_, index) => renderSquare(index))}
-        </Grid>
-        <Text fontSize="xl">{status}</Text>
-        <Button colorScheme="teal" onClick={resetGame}>
+        <Box w="100%" overflowX="auto"> 
+          <Grid templateColumns="repeat(3, 1fr)" gap={2} minW={['200px', '300px']}>
+            {board.map((_, index) => renderSquare(index))}
+          </Grid>
+        </Box>
+        <Text fontSize={['md', 'xl']} fontFamily="Arial, sans-serif" bgGradient="linear(to-l, #FF512F, #F09819)" bgClip="text">
+          {status}
+        </Text>
+        <Button
+          bgGradient="linear(to-r, #FF512F, #F09819)"
+          _hover={{
+            bgGradient: "linear(to-r, #F09819, #FF512F)",
+          }}
+          color="white"
+          onClick={resetGame}
+          w="100%"
+        >
           Reset Game
         </Button>
       </VStack>
